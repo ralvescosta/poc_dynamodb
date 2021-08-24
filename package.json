@@ -3,20 +3,38 @@
   "version": "1.0.0",
   "description": "POC DynamoDB",
   "type": "module",
-  "main": "main.mjs",
+  "main": "src/main.mjs",
   "author": "ralvescosta <rafael.rac.mg@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start:dev": "node src/main.mjs --inspect",
+    "admin": "yarn dynamodb-admin"
+  },
   "dependencies": {
-    "aws-sdk": "^2.974.0"
+    "aws-sdk": "^2.974.0",
+    "dynamodb-admin": "^4.0.3",
+    "pino": "^6.13.1"
   },
   "devDependencies": {
-    "dotenv": "^10.0.0",
+    "@types/aws-sdk": "^2.7.0",
     "@types/express": "^4.17.13",
     "@types/node": "^16.3.1",
+    "dotenv": "^10.0.0",
     "eslint": "^7.30.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0"
-  }
+    "eslint-plugin-promise": "^5.1.0",
+    "pino-inspector": "^0.1.0",
+    "pino-pretty": "^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ralvescosta/poc_dynamodb.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/ralvescosta/poc_dynamodb/issues"
+  },
+  "homepage": "https://github.com/ralvescosta/poc_dynamodb#readme"
 }
