@@ -1,0 +1,22 @@
+{
+  "name": "poc_dynamo_db",
+  "version": "1.0.0",
+  "description": "POC DynamoDB",
+  "type": "module",
+  "main": "main.mjs",
+  "author": "ralvescosta <rafael.rac.mg@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.974.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.3.1",
+    "eslint": "^7.30.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0"
+  }
+}
