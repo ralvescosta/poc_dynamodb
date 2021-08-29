@@ -8,10 +8,10 @@
   "license": "MIT",
   "scripts": {
     "start:dev": "node src/main.mjs --inspect",
-    "admin": "yarn dynamodb-admin"
+    "admin": "DYNAMO_ENDPOINT=http://localhost:8000 AWS_REGION=us-east-1 AWS_ACCESS_KEY_ID=local AWS_SECRET_ACCESS_KEY=local node dynamo_admin/main.mjs"
   },
   "dependencies": {
-    "aws-sdk": "^2.974.0",
+    "aws-sdk": "^2.978.0",
     "dynamodb-admin": "^4.0.3",
     "pino": "^6.13.1"
   },

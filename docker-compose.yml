@@ -6,12 +6,18 @@ services:
     image: amazon/dynamodb-local
     ports: 
       - 8000:8000
+    networks: 
+      - dynamo
       
-  # dynamodb-gui:
-  #   container_name: dynamodb-gui
-  #   build:
-  #     context: .
-  #   ports: 
-  #     - 8001:8001
-  #   environment: 
-  #     - DYNAMO_ENDPOINT=dynamodb:8080
+  dynamodb-admin:
+    container_name: dynamodb-admin
+    build:
+      context: .
+    ports: 
+      - 8001:8001
+    networks: 
+      - dynamo
+
+networks:
+  dynamo:
+    driver: bridge
