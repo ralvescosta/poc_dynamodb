@@ -1,6 +1,6 @@
-import { createMoviesTable } from 'repository.mjs'
+import { createIoTTable } from 'repository.mjs'
 
 ;(() => {
-  createMoviesTable()
+  createIoTTable()
   console.log('main')
 })()

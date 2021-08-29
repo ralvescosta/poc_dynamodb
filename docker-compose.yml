@@ -6,6 +6,7 @@ services:
     image: amazon/dynamodb-local
     ports: 
       - 8000:8000
+    restart: unless-stopped 
     networks: 
       - dynamo
       
@@ -15,8 +16,16 @@ services:
       context: .
     ports: 
       - 8001:8001
+    restart: unless-stopped
     networks: 
       - dynamo
+    environment: 
+      - DYNAMO_ENDPOINT=dynamodb:8000
+      - AWS_REGION=us-east-1 
+      - AWS_ACCESS_KEY_ID=local 
+      - AWS_SECRET_ACCESS_KEY=local
+    depends_on: 
+      - dynamodb
 
 networks:
   dynamo:

@@ -7,8 +7,7 @@
   "author": "ralvescosta <rafael.rac.mg@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start:dev": "node src/main.mjs --inspect",
-    "admin": "DYNAMO_ENDPOINT=http://localhost:8000 AWS_REGION=us-east-1 AWS_ACCESS_KEY_ID=local AWS_SECRET_ACCESS_KEY=local node dynamo_admin/main.mjs"
+    "start:dev": "node src/main.mjs --inspect"
   },
   "dependencies": {
     "aws-sdk": "^2.978.0",
