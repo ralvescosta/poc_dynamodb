@@ -1,4 +1,5 @@
 import AWS from 'aws-sdk'
+import { promisify } from 'util'
 
 AWS.config.update({
   region: 'us-east-1',
@@ -6,7 +7,7 @@ AWS.config.update({
 })
 const dynamoDB = new AWS.DynamoDB()
 
-export const createIoTTable = () => {
+export const createTable = async () => {
   const tableSchema = {
     AttributeDefinitions: [
       {
@@ -27,19 +28,30 @@ export const createIoTTable = () => {
         AttributeName: 'SK',
         KeyType: 'RANGE'
       }
-    ], 
+    ],
     ProvisionedThroughput: {
       ReadCapacityUnits: 30,
       WriteCapacityUnits: 30
     },
-    TableName: 'iot'
+    TableName: 'data'
+  }
+  return promisify(dynamoDB.createTable)(tableSchema)
+}
+
+export const query = async (params = {}) => {
+  const query = {
+    TableName: 'data',
+    KeyConditionExpression: '#PK = :PK and #SK BETWEEN :startDate and :endDate',
+    ExpressionAttributeValues: {
+      ':PK': 'movie',
+      ':startDate': params.startDate,
+      ':endDate': params.endDate
+    },
+    ExpressionAttributeNames: {
+      '#PK': 'PK',
+      '#SK': 'SK'
+    }
   }
 
-  dynamoDB.createTable(tableSchema, function (err, data) {
-    if (err) {
-      console.error('Unable to create table. Error JSON:', JSON.stringify(err, null, 2))
-    } else {
-      console.log('Created table. Table description JSON:', JSON.stringify(data, null, 2))
-    }
-  })
+  return promisify(dynamoDB.query)(query)
 }
